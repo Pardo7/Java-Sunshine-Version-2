@@ -10,6 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -58,19 +62,21 @@ public class MainActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
-            String[] weekForecast = {
+            // Initializing Junk Data
+            String[] weekForecastArray = {
                     "Today - Sunny - 88/63",
                     "Tomorrow - Sunny - 80/50",
                     "Thursday - Horrid - 40/55",
                     "Friday - Rainy - 80/75",
                     "Saturday - Cloudy - 90/75",
                     "Sunday - End of The World - 500/300"};
-
+            // Converting Data to list Array
+            List<String> weekForecast = new ArrayList<String>(Arrays.asList(weekForecastArray));
+            // Implementing our array adapter and the data is will be formatting and rendering
             mForecastAdapter =
                     new ArrayAdapter<String>(getActivity(),
-                            R.layout.,
-                            R.id.list_item_forcast_textview,
+                            R.layout.list_item_forecast,
+                            R.id.list_item_forecast_textview,
                             weekForecast);
 
             return rootView;
