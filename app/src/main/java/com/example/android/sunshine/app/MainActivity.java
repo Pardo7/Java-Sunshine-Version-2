@@ -1,13 +1,14 @@
 package com.example.android.sunshine.app;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -58,13 +59,19 @@ public class MainActivity extends ActionBarActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-            String[] weather = {
+            String[] weekForecast = {
                     "Today - Sunny - 88/63",
                     "Tomorrow - Sunny - 80/50",
                     "Thursday - Horrid - 40/55",
                     "Friday - Rainy - 80/75",
                     "Saturday - Cloudy - 90/75",
                     "Sunday - End of The World - 500/300"};
+
+            mForecastAdapter =
+                    new ArrayAdapter<String>(getActivity(),
+                            R.layout.list_item_forecast,
+                            R.id.list_item_forcast_textview,
+                            weekForecast);
 
             return rootView;
         }
