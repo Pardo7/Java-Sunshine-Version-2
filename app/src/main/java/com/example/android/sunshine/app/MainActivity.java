@@ -94,12 +94,12 @@ public class MainActivity extends ActionBarActivity {
                             weekForecast);
 
 
-            // Get a reference to the ListView, and attach this adapter to it
+        // Get a reference to the ListView, and attach this adapter to it
             ListView listView = (ListView) rootView.findViewById(R.id.listview_forecast);
             listView.setAdapter(mForecastAdapter);
 
-            // These two need to be declared outside the try/catch
-            // so that they can be closed in the finally block.
+        // These two need to be declared outside the try/catch
+        // so that they can be closed in the finally block.
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
 
