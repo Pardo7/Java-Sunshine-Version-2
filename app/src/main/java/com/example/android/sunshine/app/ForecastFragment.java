@@ -1,5 +1,6 @@
 package com.example.android.sunshine.app;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -97,7 +99,21 @@ public class ForecastFragment extends Fragment {
         // Get a reference to the ListView, and attach this adapter to it
         ListView listView = (ListView) rootView.findViewById(R.id.listview_forecast);
         listView.setAdapter(mForecastAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                // We get the position of the list view item to display the toast for by calling getItem on our forecast adapter
+                String forecast = mForecastAdapter.getItem(position);
+                // Here is where we actually display the toast
+                // Toast.makeText(getActivity(), forecast, Toast.LENGTH_SHORT).show();
 
+                Intent intent = new Intent(getActivity(), DetailActivity.class)
+                        // To pass in the weather forecast information we use an Intent.EXTRA, which is a key value pair in the intent
+                        // We use EXTRA_TEXT but we can use any string for the key.
+                        .putExtra(Intent.EXTRA_TEXT, forecast);
+                startActivity(intent);
+            }
+        });
         return rootView;
     }
 
