@@ -9,11 +9,13 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ShareActionProvider;
 
 
 public class MainActivity extends ActionBarActivity {
 
     private final String LOG_TAG = MainActivity.class.getSimpleName();
+    private ShareActionProvider mShareActionProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,4 +75,5 @@ public class MainActivity extends ActionBarActivity {
             Log.d(LOG_TAG, "Couldn't call" + location + ", on the map");
         }
     }
+
 }

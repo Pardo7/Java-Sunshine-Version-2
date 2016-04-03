@@ -115,7 +115,7 @@ public class ForecastFragment extends Fragment {
         weatherTask.execute(location);
     }
 
-    // We overried onstart so that the weather data refreshes when ever the fragment starts
+    // We override on-start so that the weather data refreshes when ever the fragment starts
     @Override
     public void onStart() {
         super.onStart();
